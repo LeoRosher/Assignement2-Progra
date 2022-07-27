@@ -1,15 +1,9 @@
-import java.util.Arrays;
-
 public class Canvas {
-    private int width;
-    private int height;
     private char[][] canvas;
     private String completeCanvas = "";
 
     public Canvas(int width, int height) {
         this.canvas = new char [height + 2][width + 2];
-        this.width = width;
-        this.height = height;
         for(int i = 0; i < (height + 2); i++) {
             canvas[i][0] = '|';
             canvas[i][width + 1] = '|';
@@ -23,7 +17,6 @@ public class Canvas {
                 canvas[j][i] = ' ';
             }
         }
-        //System.out.println(Arrays.deepToString(canvas));
     }
 
     public Canvas draw(int x1, int y1, int x2, int y2) {
@@ -50,7 +43,6 @@ public class Canvas {
             }
 
         }
-        //System.out.println(Arrays.deepToString(canvas));
         return this;
     }
 
@@ -58,7 +50,6 @@ public class Canvas {
         if(canvas[y + 1][x + 1] == ' ') {
             canvas[y + 1][x + 1] = ch;
         }
-        //System.out.println(Arrays.deepToString(canvas));
         return this;
     }
 
@@ -67,7 +58,9 @@ public class Canvas {
             for (int j = 0; j < canvas[i].length; j++) {
                 completeCanvas += canvas[i][j];
             }
-            completeCanvas += "\n";
+            if (i != canvas.length - 1) {
+                completeCanvas += "\n";
+            }
         }
         return completeCanvas;
     }
